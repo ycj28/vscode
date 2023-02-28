@@ -1,19 +1,23 @@
 <template>
    <div class="menu">
       <el-aside width="250px">
-         <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#2578b5" text-color="#fff"
+         <el-menu router default-active="2" class="el-menu-vertical-demo" background-color="#2578b5" text-color="#fff"
             active-text-color="#ffd04b">
-            <el-submenu index="1">
-               <template slot="title">
-                  <i class="el-icon-location"></i>
-                  <span>导航一</span>
-               </template>
-               <el-menu-item-group>
-                  <el-menu-item index="1-1">选项1</el-menu-item>
-                  <el-menu-item index="1-2">选项2</el-menu-item>
-                  <el-menu-item index="1-3">选项3</el-menu-item>
-               </el-menu-item-group>
-            </el-submenu>
+            <template v-for="(item, index) in menus">
+               <el-submenu :index="index + ''" :key="index" v-if="!item.hidden">
+                  <template slot="title">
+                     <i :class="item.iconClass"></i>
+                     <span>{{ item.name }}</span>
+                  </template>
+                  <el-menu-item-group v-for="(child, index) in item.children" :key="index">
+                     <el-menu-item :index="child.path">
+                        <i :class="child.iconClass"></i>
+                        <span>{{ child.name }}</span>
+                     </el-menu-item>
+                  </el-menu-item-group>
+               </el-submenu>
+            </template>
+
          </el-menu>
       </el-aside>
    </div>
@@ -21,7 +25,12 @@
 <script>
 export default {
    data () {
-      return {}
+      return {
+         menus: []
+      };
+   },
+   created () {
+      this.menus = [...this.$router.options.routes]
    }
 }
 </script>
@@ -32,6 +41,10 @@ export default {
 
       .el-menu {
          height: 100%;
+
+         .fa {
+            margin-right: 10px;
+         }
       }
 
       .el-submenu .el-menu-item {

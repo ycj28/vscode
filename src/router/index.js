@@ -9,16 +9,19 @@ export default new Router({
       {
          path: '/',
          redirect: '/login',
+         hidden: true,
          component: () => import('@/components/Login')
       },
       {
          path: '/login',
          Name: 'Login',
+         hidden: true,
          component: () => import('@/components/Login')
       },
       {
          path: '*',
          Name: 'NotFound',
+         hidden: true,
          component: () => import('@/components/NotFound')
       },
       {
@@ -75,19 +78,19 @@ export default new Router({
             {
                path: '/home/mapview',
                name: '地图概览',
-               iconClass: 'fa fa-fa-chart',
+               iconClass: 'fa fa-line-chart',
                component: () => import('@/components/dataAnalysis/MapView')
             },
             {
                path: '/home/score',
                name: '分数地图',
-               iconClass: 'fa fa-line-alt',
+               iconClass: 'fa fa-line-chart',
                component: () => import('@/components/dataAnalysis/ScoreMap')
             },
             {
                path: '/home/travel',
                name: '旅游地图',
-               iconClass: 'fa fa-fa-alt',
+               iconClass: 'fa fa-line-chart',
                component: () => import('@/components/dataAnalysis/TravelMap')
             }
          ]
