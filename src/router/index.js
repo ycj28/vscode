@@ -17,11 +17,16 @@ export default new Router({
          component: () => import('@/components/Login')
       },
       {
+         path: '*',
+         Name: 'NotFound',
+         component: () => import('@/components/NotFound')
+      },
+      {
          path: '/home',
          // component:Home
          // component:() => import('@/components/Home') // 路由懒加载
          component: resolve => require(['@/components/Home'], resolve) //异步组件
       }
    ],
-   mode: 'history'
+   mode: 'hash'
 })
