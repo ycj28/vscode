@@ -29,13 +29,26 @@ export function studentDel (id) {
 }
 
 // 信息列表新增接口
-export function info (data) {
+// export function info (data) {
+//    data = qs.stringify(data)
+//    return service({
+//       method: "post",
+//       url: "/info",
+//       data
+//    })
+// }
+
+
+// 信息列表新增和修改接口
+export function info (type, data) {
    data = qs.stringify(data)
-   return service({
-      method: "post",
-      url: "/info",
-      data
-   })
+   let obj = {
+      method: type, url: '/info', data
+   }
+   console.log(obj)
+   return service(
+      obj
+   )
 }
 
 // 信息列表查询接口
@@ -51,15 +64,5 @@ export function infoDel (id) {
    return service({
       method: 'delete',
       url: `/info/${id}`
-   })
-}
-
-// 信息列表修改接口
-export function infoUpdate (data) {
-   data = qs.stringify(data)
-   return service({
-      method: "put",
-      url: "/info",
-      data
    })
 }
