@@ -1,7 +1,7 @@
 <template>
    <div class="menu">
       <el-aside width="250px">
-         <el-menu router default-active="2" class="el-menu-vertical-demo" background-color="#2578b5" text-color="#fff"
+         <el-menu router default-active="2" class="el-menu-vertical-demo" background-color="#2578a7" text-color="#fff"
             active-text-color="#ffd04b">
             <template v-for="(item, index) in menus">
                <el-submenu :index="index + ''" :key="index" v-if="!item.hidden">
