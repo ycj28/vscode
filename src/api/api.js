@@ -66,3 +66,11 @@ export function infoDel (id) {
       url: `/info/${id}`
    })
 }
+
+// 数据概览接口
+export function dataview () {
+   return service({
+      method: 'get',
+      url: '/dataview'
+   })
+}
