@@ -9,18 +9,19 @@ export default new Router({
       {
          path: '/',
          redirect: '/login',
+         name: '首页',
          hidden: true,
          component: () => import('@/components/Login')
       },
       {
          path: '/login',
-         Name: 'Login',
+         name: 'Login',
          hidden: true,
          component: () => import('@/components/Login')
       },
       {
          path: '*',
-         Name: 'NotFound',
+         name: 'NotFound',
          hidden: true,
          component: () => import('@/components/NotFound')
       },
